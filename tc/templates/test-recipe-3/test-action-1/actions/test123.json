@@ -1,0 +1,20 @@
+{
+    "type": "DKDataSource_PostgreSQL", 
+    "name": "test123", 
+    "username": "xxxxxxx", 
+    "password": "xd131gfgf", 
+    "hostname": "dddddff", 
+    "port": 1231, 
+    "database": "ssssssss", 
+    "keys": {
+        "key-1": {
+            "format": "csv", 
+            "query-type": "execute_query", 
+            "row-delimiter": "", 
+            "col-delimiter": "", 
+            "sql": "ssssssssssssdsdsdsds"
+        }
+
+    }
+
+}
