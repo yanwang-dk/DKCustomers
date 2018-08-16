@@ -1,0 +1,91 @@
+{
+    "name": "Default Variables",
+    "variable-list": {
+        "todayval": {
+            "string-replace-key": "todayval",
+            "string-replace-value": "0"
+        },
+        "today": {
+            "timedelta-replace-key": "today",
+            "timedelta-days": "0",
+            "date-replace-value-as-datetime-strftime": "%Y%m%d"
+        },
+        "ziptablename": {
+            "string-replace-key": "ziptablename",
+            "string-replace-value": "RAW_US_ZIPS"
+        },
+        "allzipsdate": {
+            "string-replace-key": "allzipsdate",
+            "string-replace-value": "2015-08-13"
+        },
+        "redshiftschema": {
+            "string-replace-key": "redshiftschema",
+            "string-replace-value": "testsoething"
+        },
+        "hostnameredshift": {
+            "string-replace-key": "hostnameredshift",
+            "string-replace-value": "egalet.redshift.datakitchen.io"
+        },
+        "databaseredshift": {
+            "string-replace-key": "databaseredshift",
+            "string-replace-value": "dk"
+        },
+        "usernameredshift": {
+            "string-replace-key": "usernameredshift",
+            "string-replace-value": "dk_production"
+        },
+        "passwordredshift": {
+            "string-replace-key": "passwordredshift",
+            "string-replace-value": "Biking2lion"
+        },
+        "portredshift": {
+            "string-replace-key": "portredshift",
+            "string-replace-value": "5439"
+        },
+        "bucketname": {
+            "string-replace-key": "bucketname",
+            "string-replace-value": "dk-democustomer"
+        },
+        "s3rawkey": {
+            "string-replace-key": "s3rawkey",
+            "string-replace-value": "raw"
+        },
+        "s3accesskey": {
+            "string-replace-key": "s3accesskey",
+            "string-replace-value": "#{vault://s3_schema/s3-access-key}"
+        },
+        "s3secretkey": {
+            "string-replace-key": "s3secretkey",
+            "string-replace-value": "#{vault://s3_schema/s3-secret-key}"
+        },
+        "preconditiontests": {
+            "string-replace-key": "preconditiontests",
+            "string-replace-value": "preconditions"
+        },
+        "postconditiontests": {
+            "string-replace-key": "postconditiontests",
+            "string-replace-value": "post-conditions"
+        },
+        "recipehome": {
+            "string-replace-key": "recipehome",
+            "string-replace-value": "/home/ubuntu"
+        },
+        "recipename": {
+            "string-replace-key": "recipename",
+            "string-replace-value": "ingredient-provider-recipe"
+        },
+        "email": {
+            "string-replace-key": "email",
+            "string-replace-value": "cbergh@datakitchen.io"
+        },
+        "nodestouse": {
+            "string-replace-key": "nodestouse",
+            "string-replace-value": "nodes"
+        },
+        "edgestouse": {
+            "string-replace-key": "edgestouse",
+            "string-replace-value": "edges"
+        }
+    }
+
+}

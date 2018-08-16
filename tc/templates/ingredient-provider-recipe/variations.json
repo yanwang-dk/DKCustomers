@@ -1,0 +1,293 @@
+{
+  "active-variation": "complete-build-now",
+  "mesos-setting-list": {
+    "test-mesos": {
+			"max-ram":512,
+			"max-disk":10240,
+      "name": "parallel-test",
+      "schedule": "now",
+      "epsilon": "PT30M",
+      "mesos-url": "http://192.168.50.100:5050",
+      "owner": "chris@datakitchen.io",
+      "async": "false",
+      "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh"
+    },
+    "production05-now": {
+      "name": "parallel-test-prod",
+      "schedule": "now",
+      "epsilon": "PT30M",
+      "mesos-url": "http://127.0.0.1:5050",
+      "owner": "cbergh@datakitchen.io",
+      "async": "false",
+      "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh"
+    }
+  },
+  "override-setting-list": {
+    "create-us-zips-now-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes"
+      }
+    },
+    "create-schema-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges-create-schema"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes-create-schema"
+      }
+    },
+    "delete-schema-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges-delete-schema"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes-delete-schema"
+      }
+    },
+    "create-cluster-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges-create-cluster"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes-create-cluster"
+      }
+    },
+    "delete-cluster-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges-delete-cluster"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes-delete-cluster"
+      }
+    },
+    "test-schema-overrides": {
+      "edgestouse": {
+        "string-replace-key": "edgestouse",
+        "string-replace-value": "edges-test-schema"
+      },
+      "nodestouse": {
+        "string-replace-key": "nodestouse",
+        "string-replace-value": "nodes-test-schema"
+      }
+    }
+  },
+  "variation-list": {
+    "complete-build-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "create-us-zips-now-overrides"
+    },
+    "create-us-zips-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "create-us-zips-now-overrides",
+      "ingredient-definition": "ingredient-put-us-zips"
+    },
+    "create-schema-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "create-schema-overrides",
+      "ingredient-definition": "ingredient-create-schema"
+    },
+    "delete-schema-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "delete-schema-overrides",
+      "ingredient-definition": "ingredient-delete-schema"
+    },
+    "create-cluster-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "create-cluster-overrides",
+      "ingredient-definition": "ingredient-create-cluster"
+    },
+    "delete-cluster-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "delete-cluster-overrides",
+      "ingredient-definition": "ingredient-cluster-schema"
+    },
+    "test-schema-now": {
+      "environment-setting": "test-environment",
+      "mesos-setting": "test-mesos",
+      "override-setting": "test-schema-overrides",
+      "ingredient-definition": "ingredient-test-schema"
+    }
+  },
+  "environment-setting-list": {
+    "env-set-production": {
+      "directory-name": "/home/ubuntu/DKDemoCustomer/dc/runs",
+      "git-url": "git@github.com-DKDemoCustomer:DataKitchen/DKDemoCustomer.git",
+      "boto-config": "/root/.boto",
+      "servingbook-collection": "",
+      "recipe-run-method": "parallel",
+      "recipe-run-collection": "",
+      "git-branch": "",
+      "recipe-git-path": "DKDemoCustomer/dc/templates/ingredient-provider-recipe",
+      "port": "8888"
+    },
+    "test-environment": {
+      "directory-name": "/dk/DKDemoCustomer/dc/runs",
+      "git-url": "git@github.com-DKDemoCustomer:DataKitchen/DKDemoCustomer.git",
+      "boto-config": "/config/boto.cfg",
+      "servingbook-collection": "",
+      "recipe-run-method": "parallel",
+      "recipe-run-collection": "",
+      "git-branch": "",
+      "recipe-git-path": "DKDemoCustomer/dc/templates/ingredient-provider-recipe",
+      "port": "8889"
+    }
+  },
+  "ingredient-definition-list": [
+    {
+      "ingredient-name": "ingredient-put-us-zips",
+      "description": "This ingredient has the June 2016 full United States Zip Code data.  It includes a list of zip codes, states, and regions as well as other meta data.   This ingredient creates a table called RAW_US_ZIPS in the  Redshift database.",
+      "required-recipe-variables": [
+					{
+							"name":"hostnameredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"portredshift",
+							"required":false,
+							"type":"TCPPort"
+					},
+					{
+							"name": "usernameredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"passwordredshift",
+							"required":false,
+							"type":"Password"
+					}, 
+					{
+							"name":"databaseredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"redshiftschema",
+							"required":false,
+							"type":"Alphanumeric"
+					}],
+      "apply-runtime-recipe-variables": ["ziptablename"],
+      "overview": []
+    },
+    {
+      "ingredient-name": "ingredient-create-schema",
+      "description": "This ingredient creates a new schema in a Redshift database.   The schema is created empty without any tables",
+      "short-description": "Create the schema",
+      "required-recipe-variables": [
+				{
+					"name":"redshiftschema",
+					"display-name" : "RedShift Schema",
+					"type":"Alphanumeric",
+					"required":true
+				},
+				{
+					"name":"tableauprojectname",
+					"display-name" : "Tableau Project Name",
+					"type":"Alphanumeric",
+					"required":true
+				}
+			],
+      "apply-runtime-recipe-variables": [],
+      "rollback-ingredient" : "ingredient-delete-schema"
+    },
+    {
+      "ingredient-name": "ingredient-create-cluster",
+      "description": "This ingredient creates a new Redshift Cluster.",
+      "short-description": "Create a redshift cluster",
+      "required-recipe-variables": [
+				{
+					"name":"redshiftcluster",
+					"display-name" : "RedShift Cluster Name",
+					"type":"Alphanumeric"
+				},
+				{
+					"name":"redshiftregion",
+					"display-name" : "Redshift Cluster Region",
+					"type":"Region"
+				},
+				{
+					"name":"usernameredshift",
+					"display-name" : "Redshift Cluster Username",
+					"type":"UserID"
+				},
+				{
+					"name":"passwordredshift",
+					"display-name" : "Redshift Cluster Password",
+					"type":"Password"
+				}
+			],
+      "apply-runtime-recipe-variables": [ "hostnameredshift" ,"portredshift" ],
+      "rollback-ingredient" : "ingredient-delete-cluster"
+    },
+    {
+      "ingredient-name": "ingredient-delete-schema",
+      "description": "This ingredient drops and existing schema in a Redshift database.   The ingredient drops the schema and all tables in that schema.",
+      "short-description": "Delete the schema",
+      "required-recipe-variables": [],
+      "apply-runtime-recipe-variables": []
+    },
+    {
+      "ingredient-name": "ingredient-delete-cluster",
+      "description": "This ingredient deletes an existing Redshift Cluster.",
+      "short-description": "Delete Redshift cluster",
+      "required-recipe-variables": [],
+      "apply-runtime-recipe-variables": []
+    },
+    {
+      "ingredient-name": "ingredient-test-schema",
+      "description": "This ingredient tests whether and existing schema exists in a Redshift database. ",
+      "required-recipe-variables": [
+					{
+							"name":"hostnameredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"portredshift",
+							"required":false,
+							"type":"TCPPort"
+					},
+					{
+							"name": "usernameredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"passwordredshift",
+							"required":false,
+							"type":"Password"
+					}, 
+					{
+							"name":"databaseredshift",
+							"required":false,
+							"type":"Alphanumeric"
+					}, 
+					{
+							"name":"redshiftschema",
+							"required":false,
+							"type":"Alphanumeric"
+					}],
+      "apply-runtime-recipe-variables": []
+    }
+  ]
+}

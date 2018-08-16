@@ -1,0 +1,5 @@
+{
+  "recipe-name": "ingredient-provider-recipe",
+  "nodes_to_use": "$nodestouse",
+  "edges_to_use": "$edgestouse"
+}

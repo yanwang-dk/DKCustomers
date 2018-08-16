@@ -1,0 +1,17 @@
+{
+    "name": "create-schema",
+    "type": "DKDataSource_PostgreSQL",
+    "username": "$usernameredshift",
+    "password": "$passwordredshift",
+    "hostname": "$hostnameredshift",
+    "database": "$databaseredshift",
+    "port": "$portredshift",
+    "keys": {
+        "create-schema": {
+            "sql": "create schema IF NOT EXISTS $redshiftschema authorization $usernameredshift;",
+            "query-type": "execute_non_query"
+        }
+    },
+    "tests": {
+    }
+}

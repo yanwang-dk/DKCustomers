@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    ["create-schema", {}],
+    ["put-raw-us-zips", {}]
+  ],
+  "edges": [
+    ["create-schema", "put-raw-us-zips", {"weight": 0}]
+  ],
+  "nodes-create-schema": [
+    ["create-schema", {}],
+    ["do-nothing-node", {}]
+  ],
+  "edges-create-schema": [
+    ["create-schema", "do-nothing-node", {"weight": 0}]
+  ],
+  "nodes-delete-schema": [
+    ["delete-schema", {}],
+    ["do-nothing-node", {}]
+  ],
+  "edges-delete-schema": [
+    ["delete-schema", "do-nothing-node", {"weight": 0}]
+  ],
+  "nodes-test-schema": [
+    ["test-schema", {}],
+    ["do-nothing-node", {}]
+  ],
+  "edges-test-schema": [
+    ["test-schema", "do-nothing-node", {"weight": 0}]
+  ]
+}

@@ -1,0 +1,30 @@
+{
+    "name": "test-schema",
+    "type": "DKDataSource_PostgreSQL",
+    "username": "$usernameredshift",
+    "password": "$passwordredshift",
+    "hostname": "$hostnameredshift",
+    "database": "$databaseredshift",
+    "port": "$portredshift",
+    "keys": {
+        "test-schema": {
+            "sql": "select count(nspname) from pg_namespace where nspname = $redshiftschema;",
+            "query-type": "execute_scalar"
+        }
+    },
+    "tests": {
+        "test-schema": {
+            "test-variable": "test-schema",
+            "type": "test-contents-as-integer",
+            "applies-to-keys": ["test-schema"],
+            "action": "warning",
+            "keep-history": "True",
+            "test-logic": {
+                "test-variable": "test-schema",
+                "test-compare": "greater-than-equal-to",
+                "test-metric": "1"
+            },
+            "description": "count"
+        }
+    }
+}

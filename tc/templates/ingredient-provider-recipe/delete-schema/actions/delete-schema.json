@@ -1,0 +1,17 @@
+{
+    "name": "drop-schema",
+    "type": "DKDataSource_PostgreSQL",
+    "username": "$usernameredshift",
+    "password": "$passwordredshift",
+    "hostname": "$hostnameredshift",
+    "database": "$databaseredshift",
+    "port": "$portredshift",
+    "keys": {
+        "delete-schema": {
+            "sql": "drop schema IF EXISTS $redshiftschema;",
+            "query-type": "execute_non_query"
+        }
+    },
+    "tests": {
+    }
+}

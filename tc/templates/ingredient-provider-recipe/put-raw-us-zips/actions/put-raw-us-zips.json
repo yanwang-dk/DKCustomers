@@ -1,0 +1,31 @@
+{
+    "name": "put-raw-us-zips",
+    "type": "DKDataSource_PostgreSQL",
+    "username": "$usernameredshift",
+    "password": "$passwordredshift",
+    "hostname": "$hostnameredshift",
+    "database": "$databaseredshift",
+    "port": "$portredshift",
+    "keys": {
+        "COPY_{{ ziptablename }}": {
+            "target-field": "sql",
+            "resource-file": "raw/COPY_RAW_US_ZIPS.sql",
+            "query-type": "execute_scalar"
+        }
+    },
+    "tests": {
+        "rowcount_{{ ziptablename }}": {
+            "test-variable": "COPY_{{ ziptablename }}",
+            "type": "test-contents-as-integer",
+            "applies-to-keys": ["COPY_{{ ziptablename }}"],
+            "action": "warning",
+            "keep-history": "True",
+            "test-logic": {
+                "test-variable": "COPY_{{ ziptablename }}",
+                "test-compare": "greater-than-equal-to",
+                "test-metric": "42521"
+            },
+            "description": "Setting threshold at count from first load on 2015-08-24."
+        }
+    }
+}
