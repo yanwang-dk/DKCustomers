@@ -1,0 +1,133 @@
+{
+    "active-variation": "variation-test",
+    "environment-setting-list": {
+        "env-set-production": {},
+        "test-environment": { }
+    },
+    "mesos-setting-list": {
+        "mesos-set-production": {
+            "async": false,
+            "epsilon": "PT30M",
+            "mesos-url": "http://127.0.0.1:5050",
+            "name": "parallel-test-prod",
+            "owner": "cbergh@datakitchen.io",
+            "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh",
+            "schedule": "R/2014-03-08T20:00:00.000Z/PT2H"
+        },
+        "production05-now": {
+            "async": "false",
+            "epsilon": "PT30M",
+            "mesos-url": "http://127.0.0.1:5050",
+            "name": "parallel-test-prod",
+            "owner": "cbergh@datakitchen.io",
+            "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh",
+            "schedule": "now"
+        },
+        "production05-repeat": {
+            "async": "false",
+            "epsilon": "PT30M",
+            "mesos-url": "http://127.0.0.1:5050",
+            "name": "parallel-test-prod",
+            "owner": "cbergh@datakitchen.io",
+            "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh",
+            "schedule": "R3//PT1M"
+        },
+        "test-mesos": {
+            "async": "false",
+            "epsilon": "PT30M",
+            "mesos-url": "http://192.168.50.100:5050",
+            "name": "parallel-test",
+            "owner": "chris@datakitchen.io",
+            "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh",
+            "schedule": "now",
+						"max-ram" : 512
+        },
+        "test-mesos-repeat": {
+            "DKDOC": "https://mesos.github.io/chronos/docs/api.html",
+            "async": "false",
+            "epsilon": "PT30M",
+            "mesos-url": "http://192.168.50.100:5050",
+            "name": "test-mesos-repeat",
+            "owner": "chris@datakitchen.io",
+            "s3-script": " https://s3.amazonaws.com/mesos-scripts/generic_run_recipe_v2.sh",
+            "schedule": "R09//PT04M"
+        }
+    },
+    "override-setting-list": {
+        "ov2": {
+            "entry1": {
+                "string-replace-key": "entry1",
+                "string-replace-value": "val2"
+            }
+        },
+        "override-set-2": {
+            "desc": {
+                "string-replace-key": "desc",
+                "string-replace-value": "Thisisanoverride.SUCCESS-OVERRIDE"
+            }
+        },
+        "override-set-small": {
+            "desc": {
+                "string-replace-key": "desc",
+                "string-replace-value": "Thisisanoverride.SUCCESS-OVERRIDE"
+            },
+            "edgestouse": {
+                "string-replace-key": "edgestouse",
+                "string-replace-value": "edges-small"
+            },
+            "nodestouse": {
+                "string-replace-key": "nodestouse",
+                "string-replace-value": "nodes-small"
+            }
+        },
+        "this-weeks": {
+            "desc": {
+                "string-replace-key": "desc",
+                "string-replace-value": "Thisisanoverride.SUCCESS-OVERRIDE"
+            },
+            "desc2": {
+                "string-replace-key": "desc2",
+                "string-replace-value": "Thisisanoverride2.SUCCESS-OVERRIDE"
+            },
+            "recipehome": {
+                "string-replace-key": "recipehome",
+                "string-replace-value": "/home/chris/"
+            }
+        }
+    },
+    "variation-list": {
+        "variation-test": {
+            "environment-setting": "test-environment",
+            "mesos-setting": "test-mesos",
+            "override-setting": "override-set-2"
+        },
+        "variation-test-production05": {
+            "environment-setting": "env-set-production",
+            "mesos-setting": "mesos-set-production",
+            "override-setting": "override-set-2"
+        },
+        "variation-test-production05-now": {
+            "environment-setting": "env-set-production",
+            "mesos-setting": "production05-now",
+            "override-setting": [
+                "override-set-2",
+                "ov2"
+            ]
+        },
+        "variation-test-production05-repeat": {
+            "environment-setting": "env-set-production",
+            "mesos-setting": "production05-repeat",
+            "override-setting": "override-set-2"
+        },
+        "variation-test-repeat": {
+            "environment-setting": "test-environment",
+            "mesos-setting": "test-mesos-repeat",
+            "override-setting": "override-set-2"
+        },
+        "variation-test-small": {
+            "environment-setting": "test-environment",
+            "mesos-setting": "test-mesos",
+            "override-setting": "override-set-small"
+        }
+    }
+}

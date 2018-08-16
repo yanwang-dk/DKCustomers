@@ -1,0 +1,9 @@
+{
+    "name": "test1 variables",
+    "variable-list": {
+        "nodestouse": "nodes",
+        "edgestouse": "edges",
+        "email": "success@simulator.amazonses.com",
+        "OrderRunHistoryKitchen": "master"
+    }
+}

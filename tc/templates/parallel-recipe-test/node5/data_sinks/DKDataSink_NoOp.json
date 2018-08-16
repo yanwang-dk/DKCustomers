@@ -1,0 +1,6 @@
+{
+    "type": "DKDataSink_NoOp",
+    "name": "noopsink",
+    "keys": {},
+    "tests": {}
+}

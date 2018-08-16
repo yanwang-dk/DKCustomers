@@ -1,0 +1,26 @@
+{
+   "nodes_to_use" : "$nodestouse",
+   "recipe-emails" : {
+      "recipe-startup-email-recipients" : [
+         "carlos@datakitchen.io"
+      ],
+      "email-delivery-service" : "aws-email",
+      "recipe-complete-email-template" : "email-templates/dk_recipe_done_email_template2.html",
+      "recipe-error-email-recipients" : [
+         "carlos@datakitchen.io"
+      ],
+      "recipe-complete-email-recipients" : [
+         "carlos@datakitchen.io"
+      ],
+      "recipe-error-email-template" : "email-templates/dk_recipe_done_email_template2.html",
+      "recipe-over-duration-email-estimated-maximum-time-in-minutes" : "240",
+      "recipe-over-duration-email-recipients" : [
+         "carlos@datakitchen.io"
+      ],
+      "recipe-over-duration-email-template" : "email-templates/dk_recipe_over_duration_email_template2.html",
+      "recipe-startup-email-template" : "email-templates/dk_recipe_startup_email_template2.html"
+   },
+   "test_data" : "test_data_2016-06-01T02:37:25.141414",
+   "edges_to_use" : "$edgestouse",
+   "recipe_name" : "parallel-recipe-test"
+}
