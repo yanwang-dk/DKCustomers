@@ -3,13 +3,19 @@
         [
             "placeholder-node1", 
             {
-
+                "weight": 0
             }
         ], 
         [
             "placeholder-node2", 
             {
-
+                "weight": 0
+            }
+        ], 
+        [
+            "test-action-1", 
+            {
+                "weight": 0
             }
         ]    ], 
     "edges": [
