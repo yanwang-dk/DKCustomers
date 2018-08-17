@@ -1,7 +1,12 @@
 {
     "name": "Recipe-Template QS1 Variables", 
     "variable-list": {
-        "email": "[YOUR EMAIL HERE]"
+        "email": "ywang@datakitchen.io", 
+        "key1": "val1", 
+        "key2": {
+            "key": "val"
+        }
+
     }
 
 }
