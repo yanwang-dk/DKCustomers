@@ -1,9 +1,11 @@
 {
-    "active-variation": "Variation1", 
+    "active-variation": "", 
     "environment-setting-list": {
 
     }
 , 
+    "ingredient-definition-list": [
+    ], 
     "mesos-setting-list": {
         "production-mesos": {
             "schedule": "now"
