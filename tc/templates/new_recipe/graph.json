@@ -3,21 +3,9 @@
         [
             "placeholder-node1", 
             {
-
-            }
-        ], 
-        [
-            "placeholder-node2", 
-            {
-
+                "weight": 0
             }
         ]    ], 
     "edges": [
-        [
-            "placeholder-node1", 
-            "placeholder-node2", 
-            {
-                "weight": 0
-            }
-        ]    ]
+    ]
 }
